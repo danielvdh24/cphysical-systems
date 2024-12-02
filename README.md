@@ -1,20 +1,17 @@
-# Group 21
-**DIT639 Project: Cyber Physical Systems and Systems of Systems**
+<div align="center">
+    <img src="https://github.com/user-attachments/assets/509197d7-4ae3-4f43-bad2-7acd970c8017" height="370px">
+</div>
 
-### Current Build Status
-[![pipeline status](https://git.chalmers.se/courses/dit638/students/2024-group-21/badges/main/pipeline.svg)](https://git.chalmers.se/courses/dit638/students/2024-group-21/-/pipelines)
-[![coverage report](https://git.chalmers.se/courses/dit638/students/2024-group-21/badges/main/coverage.svg)](https://git.chalmers.se/courses/dit638/students/2024-group-21/-/commits/main)
-[![Latest Release](https://git.chalmers.se/courses/dit638/students/2024-group-21/-/badges/release.svg)](https://git.chalmers.se/courses/dit638/students/2024-group-21/-/releases)
-
+Developed an algorithm for predicting RC car steering angles using cone detection for autonomous navigation, built with Docker and CMake for testing and pipeline integration, as part of the DIT639 Cyber-Physical Systems project.
 
 ## Acknowledgments
-Special thanks to @christian.berger for his contributions to the foundational libraries used in our project, including OpenDLV, libcluon, and the opencvv template file, which have been instrumental in the development of our cyber-physical systems project.
+Special thanks to our professor [@chrberger](https://github.com/chrberger) for his contributions to the foundational libraries used in our project, including OpenDLV, libcluon, and the opencvv template file, which have been instrumental in the development of our cyber-physical systems project.
 
 ## Installation
 To install our system, complete the following steps:
 
 1. Clone this repository into your preferred directory with ```git clone git@git.chalmers.se:courses/dit638/students/2024-group-21.git```
-2. Build the project (steering wheel angle calculator microservice) using Dockerfile:
+2. Build the project using Dockerfile:
 ```
 cd cpp-opencv
 docker build -f Dockerfile -t anglecalculator .
@@ -32,80 +29,10 @@ xhost +
 docker run --rm -ti --net=host --ipc=host -e DISPLAY=$DISPLAY -v /tmp:/tmp anglecalculator:latest --cid=253 --name=img --width=640 --height=480 --verbose 
 ```
 
-## Adding New Features
-We will be following the basic git workflow and ensure usual code reviews.
-
-**Merge Conflict Rule:**
-Pull main and merge main to the branch you are on. Solve merge conflicts locally!
-
-**Branch Creation:**
-If issue is "#1 Parse recording file", you would create the branch after:
-1-parse-recording-file
-
-### Issue Body:
-**User story:**
-As a ___persona___, I want to ___action___ so that ___result___.
-
-**Acceptance criteria:**
-- [ ] do X
-- [ ] do Y
-- [ ] do Z
-
-### Commit Format:
-```
-git commit -m "#1 <<Present tense verb noun - what it does>>" -m "<<longer commit message e.g. Co-authored by rowley@student.chalmers.se optional... >>"
-```
-Concrete Example:
-```
-git commit -m "#1 Implements parsing for rec files" -m "Works using xyz encoding. Co-authored by rowley@student.chalmers.se"
-```
-
-## Fixing Bugs
-We plan to fix unexpected behaviour by creating a respective issue for that specific bug and following the previously mentioned git workflow in creating a new branch to address that problem.
-
-
-### Code-Fix Issue Format:
-This format is applied when issuing a code change issue for e.g refactoring, renaming or typo-fixing intentions.
-
-**Title**: Header for issue of concern highlighting the intended fix.
-
-**Body**: Description of what the issue is and its fix is. ***Optional*** Address issue/s of which are concerned.
-
-***Optional*** **Tags**: Relevant tags, either one or many in combination pertaining to issue at hands e.g. Fix, Fix + Typo, Refactor etc.
-
-Concrete Example:
-```
-<title> Improve error handling in file processing
-
-<body> The file processing module does not handle errors 
-properly when encountering invalid input files. Improve error 
-handling by adding more informative error messages and logging 
-errors to the standard output.
-
-<tags> Fix, Error Output 
-```
-## Merge Request Format
-
-This format is applied when requesting a branch to be merged with another branch via a Merge Request.
-
-**Title**: Latest commit message header.
-
-**Body**: Closes #>>Issue Number<<. ***Optional*** Any other relevant information.
-
-***Optional*** **Tags**: Relevant tags, either one or many in combination pertaining to the Merge Request at hands e.g. Feature, Fix + Bug, Test etc.
-
-Concrete Example:
-```
-<title> #50 Manage datatypes for redueced memory uptake
-
-<body> Closes #50
-
-```
-
 ## Contributers
 <table>
   <tr>
-    <td align="center"><img src="https://secure.gravatar.com/avatar/3056b6827d3d959ea87306c4d2dd0c6a?s=800&d=identicon" width="100px;"/><br/><sub><b>Daniel Van Den Heuvel</b></sub><br>@heuvel</td>
+    <td align="center"><img src="https://secure.gravatar.com/avatar/3056b6827d3d959ea87306c4d2dd0c6a?s=800&d=identicon" width="100px;"/><br/><sub><b>Daniel Van Den Heuvel</b></sub><br>@danielvh24</td>
     <td align="center"><img src="https://secure.gravatar.com/avatar/3271ba4e481b7c393b650b96a17344d0?s=800&d=identicon" width="100px;"/><br/><sub><b>Kai Rowley</b></sub><br>@rowley</td>
     <td align="center"><img src="https://secure.gravatar.com/avatar/82899676cb5f15c859ed9bd18921b3033716285c1331ed8406c725e91f95bd80?s=800&d=identicon" width="100px;"/><br/><sub><b>Sam Hardingham</b></sub><br>@samha</td>
     <td align="center"><img src="https://git.chalmers.se/uploads/-/system/user/avatar/3455/avatar.png?width=400" width="100px;"/><br/><sub><b>Nasit Vurgun</b></sub><br>@nasit</td>
