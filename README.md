@@ -10,7 +10,10 @@ Special thanks to our professor [@chrberger](https://github.com/chrberger) for h
 ## Installation
 To install our system, complete the following steps:
 
-1. Clone this repository into your preferred directory with ```git clone git@git.chalmers.se:courses/dit638/students/2024-group-21.git```
+1. Clone this repository into your preferred directory with
+```
+git clone git@git.chalmers.se:courses/dit638/students/2024-group-21.git
+```
 2. Build the project using Dockerfile:
 ```
 cd cpp-opencv
