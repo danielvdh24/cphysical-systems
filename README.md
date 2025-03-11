@@ -8,29 +8,46 @@ Developed an algorithm for predicting RC car steering angles using cone detectio
 Special thanks to our professor [@chrberger](https://github.com/chrberger) for his contributions to the foundational libraries used in our project, including OpenDLV, libcluon, and the opencvv template file, which have been instrumental in the development of our cyber-physical systems project.
 
 ## Installation
-To install our system, complete the following steps:
 
-1. Clone this repository into your preferred directory with
-```
-git clone git@git.chalmers.se:courses/dit638/students/2024-group-21.git
-```
-2. Build the project using Dockerfile:
-```
-cd cpp-opencv
-docker build -f Dockerfile -t anglecalculator .
-```
-3. Run microservices in same directory as recording files:
-```
-// terminal 1: openDLV - new terminal window (ctrl+alt+t):
-docker run --rm -i --init --net=host --name=opendlv-vehicle-view -v $PWD:/opt/vehicle-view/recordings -v /var/run/docker.sock:/var/run/docker.sock -p 8081:8081 chrberger/opendlv-vehicle-view:v0.0.64
+1. Clone this repository into your preferred directory:
+   
+   ```bash
+   git clone git@github.com:danielvdh24/cphysical-systems.git
+   ```
 
-// terminal 2: h264decoder - new terminal tab (ctrl+shift+t):
-docker run --rm -ti --net=host --ipc=host -e DISPLAY=$DISPLAY -v /tmp:/tmp h264decoder:v0.0.5 --cid=253 --name=img
+2. Navigate to the project directory and build the Docker image:
+   ```bash
+   cd cpp-opencv
+   docker build -f Dockerfile -t anglecalculator .
+   ```
 
-// terminal 3: template project microservice (steering wheel angle calculator) - new terminal tab (ctrl+shift+t):
-xhost +
-docker run --rm -ti --net=host --ipc=host -e DISPLAY=$DISPLAY -v /tmp:/tmp anglecalculator:latest --cid=253 --name=img --width=640 --height=480 --verbose 
-```
+3. Run the microservices
+> For each of the following steps, open a new terminal window (Ctrl+Alt+T) or a new tab (Ctrl+Shift+T) to run the services in parallel. Ensure you are in the recordings directory before running the commands.
+
+   - Start OpenDLV Vehicle View  
+     This service visualizes vehicle data.
+     ```bash
+     docker run --rm -i --init --net=host --name=opendlv-vehicle-view \
+       -v $PWD:/opt/vehicle-view/recordings \
+       -v /var/run/docker.sock:/var/run/docker.sock \
+       -p 8081:8081 chrberger/opendlv-vehicle-view:v0.0.64
+     ```
+
+   - Start H264 Decoder  
+     This service decodes the video feed.
+     ```bash
+     docker run --rm -ti --net=host --ipc=host -e DISPLAY=$DISPLAY \
+       -v /tmp:/tmp h264decoder:v0.0.5 --cid=253 --name=img
+     ```
+
+   - Start the Steering Wheel Angle Calculator  
+     This is the main microservice for calculating the steering wheel angle.
+     ```bash
+     xhost +
+     docker run --rm -ti --net=host --ipc=host -e DISPLAY=$DISPLAY \
+       -v /tmp:/tmp anglecalculator:latest --cid=253 --name=img \
+       --width=640 --height=480 --verbose
+     ```
 
 ## Contributers
 <table>
